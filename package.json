@@ -1,0 +1,23 @@
+{
+  "name": "circlular-linked-list",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "jest --coverage"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/artemmatiushenko1/circlular-linked-list.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/artemmatiushenko1/circlular-linked-list/issues"
+  },
+  "homepage": "https://github.com/artemmatiushenko1/circlular-linked-list#readme",
+  "devDependencies": {
+    "jest": "^27.5.1"
+  }
+}
