@@ -17,12 +17,45 @@ class CircularLinkedList {
   #tail = null;
   #length = 0;
 
-  append() {}
+  append() {
+    const node = new Node(element);
+
+    if (!this.#head) {
+      this.#head = node;
+      node.next = this.#head;
+    } else {
+      let currentNode = this.#head;
+      while (currentNode.next !== this.#head) {
+        currentNode = currentNode.next;
+      }
+      currentNode.next = node;
+      node.next = this.#head;
+    }
+
+    this.#tail = node;
+    this.#length++;
+  }
+
   length() {}
   insert() {}
   delete() {}
   deleteAll() {}
-  get() {}
+
+  get() {
+    if (index < 0 || index >= this.#length) {
+      throw new Error('The provided index is incorrect');
+    }
+    let currentIndex = 0;
+    let currentNode = this.#head;
+    while (currentIndex < this.#length) {
+      if (currentIndex === index) {
+        return currentNode.value;
+      }
+      currentNode = currentNode.next;
+      currentIndex += 1;
+    }
+  }
+
   clone() {}
   reverse() {}
   findFirst() {}
