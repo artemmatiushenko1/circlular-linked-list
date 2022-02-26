@@ -11,3 +11,22 @@ class Node {
     this.next = null;
   }
 }
+
+class CircularLinkedList {
+  #head = null;
+  #tail = null;
+  #length = 0;
+
+  append() {}
+  length() {}
+  insert() {}
+  delete() {}
+  deleteAll() {}
+  get() {}
+  clone() {}
+  reverse() {}
+  findFirst() {}
+  findLast() {}
+  clear() {}
+  extend() {}
+}
