@@ -17,7 +17,7 @@ class CircularLinkedList {
   #tail = null;
   #length = 0;
 
-  append() {
+  append(element) {
     const node = new Node(element);
 
     if (!this.#head) {
@@ -36,12 +36,15 @@ class CircularLinkedList {
     this.#length++;
   }
 
-  length() {}
+  length() {
+    return this.#length;
+  }
+
   insert() {}
   delete() {}
   deleteAll() {}
 
-  get() {
+  get(index) {
     if (index < 0 || index >= this.#length) {
       throw new Error('The provided index is incorrect');
     }
@@ -63,3 +66,9 @@ class CircularLinkedList {
   clear() {}
   extend() {}
 }
+
+const list = new CircularLinkedList();
+['2', '3'].forEach((value) => list.append(value));
+console.log(list.get(1));
+
+module.exports = CircularLinkedList;
