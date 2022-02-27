@@ -37,7 +37,7 @@ class CircularLinkedList {
   }
 
   length() {
-    return this.length;
+    return this.#length;
   }
 
   insert() {}
