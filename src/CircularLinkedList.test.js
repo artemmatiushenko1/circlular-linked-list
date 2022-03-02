@@ -415,3 +415,15 @@ describe('findLast', () => {
     expect(lastOccurrenceIndex).toBe(-1);
   });
 });
+
+describe('clear', () => {
+  test('should clear a list', () => {
+    const list = new CircularLinkedList();
+    ['1', '2', '2', '2'].forEach((value) => list.append(value));
+
+    list.clear();
+
+    expect(list.length()).toBe(0);
+    expect(() => list.get(1)).toThrow('The provided index is incorrect');
+  });
+});
