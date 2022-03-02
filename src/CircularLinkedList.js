@@ -164,7 +164,22 @@ class CircularLinkedList {
     return -1;
   }
 
-  findLast() {}
+  findLast(element) {
+    let currentIndex = 0;
+    let elementIndex = -1;
+    let currentNode = this.#head;
+
+    do {
+      if (currentNode.value === element) {
+        elementIndex = currentIndex;
+      }
+      currentNode = currentNode.next;
+      currentIndex += 1;
+    } while (currentNode !== this.#head);
+
+    return elementIndex;
+  }
+
   clear() {}
   extend() {}
 
@@ -188,6 +203,7 @@ list.delete(0);
 list.deleteAll('2');
 list.reverse();
 console.log(list.findFirst('6'));
+console.log(list.findLast('6'));
 list.print();
 
 module.exports = CircularLinkedList;
