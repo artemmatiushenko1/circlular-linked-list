@@ -62,7 +62,34 @@ class CircularLinkedList {
     this.#length += 1;
   }
 
-  delete() {}
+  delete(index) {
+    if (index < 0 || index > this.#length - 1) {
+      throw new Error('The provided index is incorrect');
+    }
+
+    let currentIndex = 0;
+    let currentNode = this.#head;
+    let elementToRemove = null;
+
+    if (index === 0) {
+      elementToRemove = this.#head.value;
+      this.#head = currentNode.next;
+      this.#tail.next = this.#head;
+      this.#length -= 1;
+      return elementToRemove;
+    }
+
+    while (currentIndex < index - 1) {
+      currentNode = currentNode.next;
+      currentIndex += 1;
+    }
+
+    elementToRemove = currentNode.next.value;
+    currentNode.next = currentNode.next.next;
+    this.#length -= 1;
+    return elementToRemove;
+  }
+
   deleteAll() {}
 
   get(index) {
@@ -103,6 +130,7 @@ const list = new CircularLinkedList();
 console.log(list.get(1));
 console.log(list.length());
 list.insert('4', list.length() - 1);
+list.delete(0);
 list.print();
 
 module.exports = CircularLinkedList;
