@@ -344,3 +344,34 @@ describe('clone', () => {
     expect(listCopy.length()).toBe(3);
   });
 });
+
+describe('reverse', () => {
+  test('should properly reverse a list', () => {
+    const list = new CircularLinkedList();
+    ['1', '2', '3', '5'].forEach((value) => list.append(value));
+
+    list.reverse();
+
+    expect(list.get(0)).toBe('5');
+    expect(list.get(1)).toBe('3');
+    expect(list.get(2)).toBe('2');
+    expect(list.get(3)).toBe('1');
+  });
+
+  test('should properly reverse a list with only one element', () => {
+    const list = new CircularLinkedList();
+    ['1'].forEach((value) => list.append(value));
+
+    list.reverse();
+
+    expect(list.get(0)).toBe('1');
+  });
+
+  test('should properly reverse an empty list', () => {
+    const list = new CircularLinkedList();
+
+    list.reverse();
+
+    expect(list.length()).toBe(0);
+  });
+});

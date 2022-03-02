@@ -136,6 +136,8 @@ class CircularLinkedList {
     let currentNode = this.#head;
     let next = null;
 
+    if (currentNode === null) return;
+
     do {
       next = currentNode.next;
       currentNode.next = prevNode;
