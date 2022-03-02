@@ -149,7 +149,21 @@ class CircularLinkedList {
     this.#head = prevNode;
   }
 
-  findFirst() {}
+  findFirst(element) {
+    let currentIndex = 0;
+    let currentNode = this.#head;
+
+    do {
+      if (currentNode.value === element) {
+        return currentIndex;
+      }
+      currentNode = currentNode.next;
+      currentIndex += 1;
+    } while (currentNode !== this.#head);
+
+    return -1;
+  }
+
   findLast() {}
   clear() {}
   extend() {}
@@ -166,13 +180,14 @@ class CircularLinkedList {
 }
 
 const list = new CircularLinkedList();
-['1', '2', '2', '3'].forEach((value) => list.append(value));
+['1', '2', '2', '3', '4', '5', '6', '6'].forEach((value) => list.append(value));
 console.log(list.get(1));
 console.log(list.length());
 list.insert('4', list.length() - 1);
 list.delete(0);
 list.deleteAll('2');
 list.reverse();
+console.log(list.findFirst('6'));
 list.print();
 
 module.exports = CircularLinkedList;
