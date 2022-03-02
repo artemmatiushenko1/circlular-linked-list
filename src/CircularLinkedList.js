@@ -120,7 +120,17 @@ class CircularLinkedList {
     }
   }
 
-  clone() {}
+  clone() {
+    const newList = new CircularLinkedList();
+    let currentNode = this.#head;
+    do {
+      newList.append(currentNode.value);
+      currentNode = currentNode.next;
+    } while (currentNode !== this.#head);
+
+    return newList;
+  }
+
   reverse() {}
   findFirst() {}
   findLast() {}
