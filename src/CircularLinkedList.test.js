@@ -65,3 +65,56 @@ describe('append', () => {
     expect(list.length()).toBe(4);
   });
 });
+
+describe('get', () => {
+  test('should throw an error when accessing an element with index which not exists', () => {
+    const list = new CircularLinkedList();
+    ['1', '2', '3', '3', '5', '6'].forEach((value) => list.append(value));
+
+    expect(() => list.get(10)).toThrow('The provided index is incorrect');
+  });
+
+  test('should throw an error when try to access element when the list is empty', () => {
+    const list = new CircularLinkedList();
+
+    expect(() => list.get(10)).toThrow('The provided index is incorrect');
+  });
+
+  test('should return the 1st element by index from list with only one element', () => {
+    const list = new CircularLinkedList();
+    list.append('1');
+
+    const element = list.get(0);
+
+    expect(element).toBe('1');
+  });
+
+  test('should return the 3rd element by index from list with multiple elements', () => {
+    const list = new CircularLinkedList();
+    ['1', '2', '3', '3', '5', '6'].forEach((value) => list.append(value));
+
+    const element = list.get(2);
+
+    expect(element).toBe('3');
+  });
+
+  test('should return the last element from list with multiple elements', () => {
+    const list = new CircularLinkedList();
+    ['1', '2', '3', '3', '5', '6'].forEach((value) => list.append(value));
+
+    const lastIndexElement = list.length() - 1;
+    const element = list.get(lastIndexElement);
+
+    expect(element).toBe('6');
+  });
+
+  test('should return the last element by index from list with only one element', () => {
+    const list = new CircularLinkedList();
+    list.append('1');
+
+    const lastIndexElement = list.length() - 1;
+    const element = list.get(lastIndexElement);
+
+    expect(element).toBe('1');
+  });
+});
