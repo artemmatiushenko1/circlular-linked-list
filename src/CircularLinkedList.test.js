@@ -375,3 +375,23 @@ describe('reverse', () => {
     expect(list.length()).toBe(0);
   });
 });
+
+describe('findFirst', () => {
+  test("should return an index of the first occurence of element '2'", () => {
+    const list = new CircularLinkedList();
+    ['1', '2', '2', '2'].forEach((value) => list.append(value));
+
+    const firstOccurrenceIndex = list.findFirst('2');
+
+    expect(firstOccurrenceIndex).toBe(1);
+  });
+
+  test('should return -1 when the element is not in the list', () => {
+    const list = new CircularLinkedList();
+    ['1', '2', '2', '2'].forEach((value) => list.append(value));
+
+    const firstOccurrenceIndex = list.findFirst('5');
+
+    expect(firstOccurrenceIndex).toBe(-1);
+  });
+});
