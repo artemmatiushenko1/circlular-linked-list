@@ -318,3 +318,27 @@ describe('deleteAll', () => {
     expect(list.get(4)).toBe('6');
   });
 });
+
+describe('clone', () => {
+  test('should create a copy of list', () => {
+    const list = new CircularLinkedList();
+    ['1', '2'].forEach((value) => list.append(value));
+
+    const listCopy = list.clone();
+
+    expect(listCopy.get(0)).toBe('1');
+    expect(listCopy.get(1)).toBe('2');
+    expect(listCopy.length()).toBe(2);
+  });
+
+  test('should not affect original list when manipulating a copy', () => {
+    const list = new CircularLinkedList();
+    ['1', '2', '3', '5'].forEach((value) => list.append(value));
+
+    const listCopy = list.clone();
+    listCopy.delete(0);
+
+    expect(list.get(0)).toBe('1');
+    expect(listCopy.get(0)).toBe('2');
+  });
+});
