@@ -131,7 +131,22 @@ class CircularLinkedList {
     return newList;
   }
 
-  reverse() {}
+  reverse() {
+    let prevNode = null;
+    let currentNode = this.#head;
+    let next = null;
+
+    do {
+      next = currentNode.next;
+      currentNode.next = prevNode;
+      prevNode = currentNode;
+      currentNode = next;
+    } while (currentNode !== this.#head);
+
+    this.#head.next = prevNode;
+    this.#head = prevNode;
+  }
+
   findFirst() {}
   findLast() {}
   clear() {}
@@ -154,6 +169,8 @@ console.log(list.get(1));
 console.log(list.length());
 list.insert('4', list.length() - 1);
 list.delete(0);
+list.deleteAll('2');
+list.reverse();
 list.print();
 
 module.exports = CircularLinkedList;

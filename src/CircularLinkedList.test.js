@@ -339,6 +339,8 @@ describe('clone', () => {
     listCopy.delete(0);
 
     expect(list.get(0)).toBe('1');
+    expect(list.length()).toBe(4);
     expect(listCopy.get(0)).toBe('2');
+    expect(listCopy.length()).toBe(3);
   });
 });
