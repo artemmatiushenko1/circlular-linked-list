@@ -90,7 +90,20 @@ class CircularLinkedList {
     return elementToRemove;
   }
 
-  deleteAll() {}
+  deleteAll(element) {
+    let currentNode = this.#head;
+    let currentIndex = 0;
+
+    while (currentIndex < this.#length) {
+      if (currentNode.value === element) {
+        this.delete(currentIndex);
+        currentNode = currentNode.next;
+      } else {
+        currentNode = currentNode.next;
+        currentIndex += 1;
+      }
+    }
+  }
 
   get(index) {
     if (index < 0 || index >= this.#length) {
