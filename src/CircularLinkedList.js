@@ -180,7 +180,11 @@ class CircularLinkedList {
     return elementIndex;
   }
 
-  clear() {}
+  clear() {
+    this.#head = null;
+    this.#length = 0;
+  }
+
   extend() {}
 
   print() {
