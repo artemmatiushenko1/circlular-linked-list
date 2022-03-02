@@ -427,3 +427,47 @@ describe('clear', () => {
     expect(() => list.get(1)).toThrow('The provided index is incorrect');
   });
 });
+
+describe('extend', () => {
+  test('should properly add elements from one list to the end of the other list', () => {
+    const firstList = new CircularLinkedList();
+    ['1', '2'].forEach((value) => firstList.append(value));
+    const secondList = new CircularLinkedList();
+    ['3', '4', '5'].forEach((value) => secondList.append(value));
+
+    firstList.extend(secondList);
+
+    expect(firstList.length()).toBe(5);
+    expect(firstList.get(0)).toBe('1');
+    expect(firstList.get(1)).toBe('2');
+    expect(firstList.get(2)).toBe('3');
+    expect(firstList.get(3)).toBe('4');
+    expect(firstList.get(4)).toBe('5');
+  });
+
+  test('should add elements from one list to the empty list', () => {
+    const firstList = new CircularLinkedList();
+    const secondList = new CircularLinkedList();
+    ['3', '4', '5'].forEach((value) => secondList.append(value));
+
+    firstList.extend(secondList);
+
+    expect(firstList.length()).toBe(3);
+    expect(firstList.get(0)).toBe('3');
+    expect(firstList.get(1)).toBe('4');
+    expect(firstList.get(2)).toBe('5');
+  });
+
+  test('should not affect the second list when manipulating the exteded list', () => {
+    const firstList = new CircularLinkedList();
+    ['1', '2'].forEach((value) => firstList.append(value));
+    const secondList = new CircularLinkedList();
+    ['3', '4', '5'].forEach((value) => secondList.append(value));
+
+    firstList.extend(secondList);
+    firstList.delete(0);
+
+    expect(secondList.length()).toBe(3);
+    expect(secondList.get(0)).toBe('3');
+  });
+});
