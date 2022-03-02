@@ -276,3 +276,45 @@ describe('delete', () => {
     expect(() => list.delete(4)).toThrow('The provided index is incorrect');
   });
 });
+
+describe('deleteAll', () => {
+  test("should delete all occurencies of '3' element when there's 2 occurencies", () => {
+    const list = new CircularLinkedList();
+    ['1', '2', '3', '3', '5', '6'].forEach((value) => list.append(value));
+
+    list.deleteAll('3');
+
+    expect(list.length()).toBe(4);
+    expect(list.get(0)).toBe('1');
+    expect(list.get(1)).toBe('2');
+    expect(list.get(2)).toBe('5');
+    expect(list.get(3)).toBe('6');
+  });
+
+  test("should delete one '3' element when there's only one occurence", () => {
+    const list = new CircularLinkedList();
+    ['1', '2', '3', '5', '6'].forEach((value) => list.append(value));
+
+    list.deleteAll('3');
+
+    expect(list.length()).toBe(4);
+    expect(list.get(0)).toBe('1');
+    expect(list.get(1)).toBe('2');
+    expect(list.get(2)).toBe('5');
+    expect(list.get(3)).toBe('6');
+  });
+
+  test("should delete nothing when there's no occurencies of a given element", () => {
+    const list = new CircularLinkedList();
+    ['1', '2', '3', '5', '6'].forEach((value) => list.append(value));
+
+    list.deleteAll('7');
+
+    expect(list.length()).toBe(5);
+    expect(list.get(0)).toBe('1');
+    expect(list.get(1)).toBe('2');
+    expect(list.get(2)).toBe('3');
+    expect(list.get(3)).toBe('5');
+    expect(list.get(4)).toBe('6');
+  });
+});
