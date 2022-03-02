@@ -65,10 +65,22 @@ class CircularLinkedList {
   findLast() {}
   clear() {}
   extend() {}
+
+  print() {
+    let current = this.#head;
+    do {
+      if (current) {
+        console.log(current.value);
+        current = current.next;
+      }
+    } while (current !== this.#head);
+  }
 }
 
 const list = new CircularLinkedList();
-['2', '3'].forEach((value) => list.append(value));
+['1', '2', '2', '3'].forEach((value) => list.append(value));
 console.log(list.get(1));
+console.log(list.length());
+list.print();
 
 module.exports = CircularLinkedList;
