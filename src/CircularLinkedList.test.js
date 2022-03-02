@@ -217,3 +217,62 @@ describe('insert', () => {
     );
   });
 });
+
+describe('delete', () => {
+  test('should properly delete an element with index 1', () => {
+    const list = new CircularLinkedList();
+    ['1', '2', '3'].forEach((value) => list.append(value));
+
+    const deletedElement = list.delete(1);
+
+    expect(deletedElement).toBe('2');
+    expect(list.get(1)).toBe('3');
+    expect(list.length()).toBe(2);
+  });
+
+  test('should properly delete the 1st element from the list with only one element', () => {
+    const list = new CircularLinkedList();
+    list.append('1');
+
+    const deletedElement = list.delete(0);
+
+    expect(deletedElement).toBe('1');
+    expect(list.length()).toBe(0);
+  });
+
+  test('should properly delete the 1st element from the list with multiple elements', () => {
+    const list = new CircularLinkedList();
+    ['1', '2', '3'].forEach((value) => list.append(value));
+
+    const deletedElement = list.delete(0);
+
+    expect(deletedElement).toBe('1');
+    expect(list.length()).toBe(2);
+  });
+
+  test('should delete the last element from list', () => {
+    const list = new CircularLinkedList();
+    ['1', '2', '3'].forEach((value) => list.append(value));
+
+    const lastElementIndex = list.length() - 1;
+    const deletedElement = list.delete(lastElementIndex);
+
+    expect(deletedElement).toBe('3');
+    expect(() => list.get(2)).toThrow('The provided index is incorrect');
+    expect(list.length()).toBe(2);
+  });
+
+  test('should throw an error when passing index less than zero', () => {
+    const list = new CircularLinkedList();
+    ['1', '2', '3'].forEach((value) => list.append(value));
+
+    expect(() => list.delete(-2)).toThrow('The provided index is incorrect');
+  });
+
+  test('should throw an error when passing index greater than max available index', () => {
+    const list = new CircularLinkedList();
+    ['1', '2', '3'].forEach((value) => list.append(value));
+
+    expect(() => list.delete(4)).toThrow('The provided index is incorrect');
+  });
+});
