@@ -67,7 +67,7 @@ describe('append', () => {
 });
 
 describe('get', () => {
-  test('should throw an error when accessing an element with index which not exists', () => {
+  test("should throw an error when accessing an element with index which doesn't exists", () => {
     const list = new CircularLinkedList();
     ['1', '2', '3', '3', '5', '6'].forEach((value) => list.append(value));
 
@@ -144,5 +144,76 @@ describe('length', () => {
     const length = list.length();
 
     expect(length).toBe(1);
+  });
+});
+
+describe('insert', () => {
+  test("should properly insert value '4' at index of 2", () => {
+    const list = new CircularLinkedList();
+    ['1', '2', '3', '5'].forEach((value) => list.append(value));
+
+    list.insert('4', 2);
+
+    expect(list.length()).toBe(5);
+    expect(list.get(0)).toBe('1');
+    expect(list.get(1)).toBe('2');
+    expect(list.get(2)).toBe('4');
+    expect(list.get(3)).toBe('3');
+    expect(list.get(4)).toBe('5');
+  });
+
+  test("should insert value '4' at the beginning of list (index = 0)", () => {
+    const list = new CircularLinkedList();
+    ['1', '2', '3', '5'].forEach((value) => list.append(value));
+
+    list.insert('4', 0);
+
+    expect(list.length()).toBe(5);
+    expect(list.get(0)).toBe('4');
+    expect(list.get(1)).toBe('1');
+    expect(list.get(2)).toBe('2');
+    expect(list.get(3)).toBe('3');
+    expect(list.get(4)).toBe('5');
+  });
+
+  test("should insert value '4' at the last index at the moment of insertion", () => {
+    const list = new CircularLinkedList();
+    ['1', '2', '3', '5'].forEach((value) => list.append(value));
+
+    list.insert('4', list.length() - 1);
+
+    expect(list.length()).toBe(5);
+    expect(list.get(0)).toBe('1');
+    expect(list.get(1)).toBe('2');
+    expect(list.get(2)).toBe('3');
+    expect(list.get(3)).toBe('4');
+    expect(list.get(4)).toBe('5');
+  });
+
+  test('should throw an error when passing index greater than max available index', () => {
+    const list = new CircularLinkedList();
+    ['1', '2', '3'].forEach((value) => list.append(value));
+
+    expect(() => list.insert('4', 10)).toThrow(
+      'The provided index is incorrect'
+    );
+  });
+
+  test('should throw an error when passing index less than zero', () => {
+    const list = new CircularLinkedList();
+    ['1', '2', '3'].forEach((value) => list.append(value));
+
+    expect(() => list.insert('4', -1)).toThrow(
+      'The provided index is incorrect'
+    );
+  });
+
+  test('should throw an error when passing value of unacceptable type', () => {
+    const list = new CircularLinkedList();
+    ['1', '2', '3'].forEach((value) => list.append(value));
+
+    expect(() => list.insert(4, 1)).toThrow(
+      `The value of node can\'t be typeof number`
+    );
   });
 });
