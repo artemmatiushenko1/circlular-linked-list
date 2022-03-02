@@ -118,3 +118,31 @@ describe('get', () => {
     expect(element).toBe('1');
   });
 });
+
+describe('length', () => {
+  test('should return a length of the list with multiple elements', () => {
+    const list = new CircularLinkedList();
+    ['1', '2', '3'].forEach((value) => list.append(value));
+
+    const length = list.length();
+
+    expect(length).toBe(3);
+  });
+
+  test('should return a length of an empty list', () => {
+    const list = new CircularLinkedList();
+
+    const length = list.length();
+
+    expect(length).toBe(0);
+  });
+
+  test('should return a length of list with only 1 element', () => {
+    const list = new CircularLinkedList();
+    list.append('1');
+
+    const length = list.length();
+
+    expect(length).toBe(1);
+  });
+});
