@@ -395,3 +395,23 @@ describe('findFirst', () => {
     expect(firstOccurrenceIndex).toBe(-1);
   });
 });
+
+describe('findLast', () => {
+  test("should return an index of the last occurence of element '2'", () => {
+    const list = new CircularLinkedList();
+    ['1', '2', '2', '2'].forEach((value) => list.append(value));
+
+    const lastOccurrenceIndex = list.findLast('2');
+
+    expect(lastOccurrenceIndex).toBe(3);
+  });
+
+  test('should return -1 when the element is not in the list', () => {
+    const list = new CircularLinkedList();
+    ['1', '2', '2', '2'].forEach((value) => list.append(value));
+
+    const lastOccurrenceIndex = list.findLast('10');
+
+    expect(lastOccurrenceIndex).toBe(-1);
+  });
+});
