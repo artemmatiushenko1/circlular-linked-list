@@ -185,7 +185,15 @@ class CircularLinkedList {
     this.#length = 0;
   }
 
-  extend() {}
+  extend(list) {
+    let currentIndex = 0;
+    if (list.length() !== 0) {
+      while (currentIndex < list.length()) {
+        this.append(list.get(currentIndex));
+        currentIndex += 1;
+      }
+    }
+  }
 
   print() {
     let current = this.#head;
