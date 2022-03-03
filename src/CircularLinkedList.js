@@ -33,7 +33,7 @@ class CircularLinkedList {
     }
 
     this.#tail = node;
-    this.#length++;
+    this.#length--;
   }
 
   length() {
@@ -54,12 +54,12 @@ class CircularLinkedList {
     } else {
       while (currentIndex < index - 1) {
         prevNode = prevNode.next;
-        currentIndex += 1;
+        currentIndex++;
       }
       node.next = prevNode.next;
       prevNode.next = node;
     }
-    this.#length += 1;
+    this.#length++;
   }
 
   delete(index) {
@@ -75,18 +75,18 @@ class CircularLinkedList {
       elementToRemove = this.#head.value;
       this.#head = currentNode.next;
       this.#tail.next = this.#head;
-      this.#length -= 1;
+      this.#length--;
       return elementToRemove;
     }
 
     while (currentIndex < index - 1) {
       currentNode = currentNode.next;
-      currentIndex += 1;
+      currentIndex++;
     }
 
     elementToRemove = currentNode.next.value;
     currentNode.next = currentNode.next.next;
-    this.#length -= 1;
+    this.#length--;
     return elementToRemove;
   }
 
@@ -100,7 +100,7 @@ class CircularLinkedList {
         currentNode = currentNode.next;
       } else {
         currentNode = currentNode.next;
-        currentIndex += 1;
+        currentIndex++;
       }
     }
   }
@@ -116,7 +116,7 @@ class CircularLinkedList {
         return currentNode.value;
       }
       currentNode = currentNode.next;
-      currentIndex += 1;
+      currentIndex++;
     }
   }
 
@@ -158,7 +158,7 @@ class CircularLinkedList {
         return currentIndex;
       }
       currentNode = currentNode.next;
-      currentIndex += 1;
+      currentIndex++;
     } while (currentNode !== this.#head);
 
     return -1;
@@ -174,7 +174,7 @@ class CircularLinkedList {
         elementIndex = currentIndex;
       }
       currentNode = currentNode.next;
-      currentIndex += 1;
+      currentIndex++;
     } while (currentNode !== this.#head);
 
     return elementIndex;
@@ -190,7 +190,7 @@ class CircularLinkedList {
     if (list.length() !== 0) {
       while (currentIndex < list.length()) {
         this.append(list.get(currentIndex));
-        currentIndex += 1;
+        currentIndex++;
       }
     }
   }
