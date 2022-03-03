@@ -206,16 +206,4 @@ class CircularLinkedList {
   }
 }
 
-const list = new CircularLinkedList();
-['1', '2', '2', '3', '4', '5', '6', '6'].forEach((value) => list.append(value));
-console.log(list.get(1));
-console.log(list.length());
-list.insert('4', list.length() - 1);
-list.delete(0);
-list.deleteAll('2');
-list.reverse();
-console.log(list.findFirst('6'));
-console.log(list.findLast('6'));
-list.print();
-
 module.exports = CircularLinkedList;
