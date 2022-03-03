@@ -119,6 +119,8 @@ Methods:
   list.reverse();
   ```
 
+Some more examples can be found in [example.js](https://github.com/artemmatiushenko1/circlular-linked-list/blob/main/example.js)
+
 ### Built with
 
 - Node.js
