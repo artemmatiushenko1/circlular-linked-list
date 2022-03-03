@@ -1,3 +1,5 @@
+[![Node.js CI](https://github.com/artemmatiushenko1/circlular-linked-list/actions/workflows/node.js.yml/badge.svg)](https://github.com/artemmatiushenko1/circlular-linked-list/actions/workflows/node.js.yml)
+
 # Circular singly linked list
 
 A circular linked list is a type of linked list in which the first and the last nodes are also connected to each other to form a circle. There is no NULL at the end.
