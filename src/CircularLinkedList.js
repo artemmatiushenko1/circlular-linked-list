@@ -33,7 +33,7 @@ class CircularLinkedList {
     }
 
     this.#tail = node;
-    this.#length--;
+    this.#length++;
   }
 
   length() {
