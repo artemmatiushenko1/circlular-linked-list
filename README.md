@@ -54,7 +54,7 @@ Methods:
   Should return the element by it's index in list
 
   ```js
-  list.get('1');
+  list.get(1);
   ```
 
 - ##### `length()`
